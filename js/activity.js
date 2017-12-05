@@ -40,8 +40,19 @@ function runactivity(act,doc,colors,env,datastore){
 		function resizeCanvas() {
 			canvas.width = window.innerWidth; 
 			canvas.height = window.innerHeight-55;
-			g.resize();
+			g.initialiseFromArray();
 		}
+
+		var solveButton = doc.getElementById("solve-button");
+		solveButton.addEventListener('click', function (a) {
+			g.solve();
+		});
+
+		var newGameButton = doc.getElementById("new-game-button");
+		newGameButton.addEventListener('click', function (a) {
+			g.newGame();
+		});
+
 		window.addEventListener('activityStop', function (eve) {
 			eve.preventDefault();
 			g.stop();

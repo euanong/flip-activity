@@ -2,26 +2,10 @@
   background-image: url(../activity/activity-icon.svg);
 }
 
-#buddy-button {
-  background-image: url(../icons/my-colors.svg);
+#main-toolbar #solve-button {
+  background-image: url(../icons/help-toolbar.svg);
 }
 
-#rainbow-button {
-  background-image: url(../icons/rainbow-colors.svg);
-}
-
-#horizontal-button {
-  background-image: url(../icons/new-game-horizontal.svg);
-}
-
-#vertical-button {
-  background-image: url(../icons/new-game-vertical.svg);
-}
-
-#bilateral-button {
-  background-image: url(../icons/new-game-bilateral.svg);
-}
-
-#robot-button {
-  background-image: url(../icons/robot-off.svg);
+#main-toolbar #new-game-button {
+  background-image: url(../icons/new-game.svg);
 }

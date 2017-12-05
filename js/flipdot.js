@@ -4,10 +4,12 @@ function Dot(stage,x,y,colours,index,radius,game,xpos,ypos){
 	this.radius = radius;
 	this.circle = null;
 	this.clickable = true;
+	this.x = x;
+	this.y = y;
 
-	this.setCircle = function(x,y){
-		this.circle.x = x;
-		this.circle.y = y;
+	this.setCircle = function(){
+		this.circle.x = this.x;
+		this.circle.y = this.y;
 		stage.addChild(this.circle);
 	}
 
@@ -68,7 +70,7 @@ function Dot(stage,x,y,colours,index,radius,game,xpos,ypos){
 		var circle = new createjs.Shape();
 		circle.graphics.beginFill(this.colours[this.colour]).drawCircle(0,0,this.radius).endFill();
 		this.circle = circle;
-		this.setCircle(x,y);
+		this.setCircle();
 		this.setClickListener();
 		//console.log(this.circle);
 	}
