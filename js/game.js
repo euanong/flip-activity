@@ -1,4 +1,4 @@
-function Game(stage,xocolor,doc,datastore,activity){
+function Game(stage,xocolor,doc,datastore,activity,sizepalette){
 	this.margin = 0;
 	this.radius = 0;
 	this.circleswidth = 0;
@@ -99,8 +99,8 @@ function Game(stage,xocolor,doc,datastore,activity){
 		} else {
 			var dot = this.stack.pop();
 			this.flip(dot[0],dot[1],false,false);
-			var t = this;
-			this.solveTimeout = setTimeout(function(){t.solve();},750);
+			//var t = this;
+			//this.solveTimeout = setTimeout(function(){t.solve();},750);
 		}
 	}
 
@@ -117,6 +117,7 @@ function Game(stage,xocolor,doc,datastore,activity){
 			this.startgridwidth++;
 			this.startgridheight++;
 		}
+		this.palette.setUsed();
 		var t = this;
 		this.newGameTimeout = setTimeout(function(){t.newGame();},2000);
 	}
@@ -221,9 +222,16 @@ function Game(stage,xocolor,doc,datastore,activity){
 		}
 	}
 
+	this.setSize = function(size){
+		this.startgridwidth = size;
+		this.startgridheight = size;
+		this.newGame();
+	}
+
 	this.init = function(){
 		//console.log("init");
 		//console.log(activity.getDatastoreObject());
+		this.palette = new sizepalette.SizePalette(this,doc.getElementById('size-button'),undefined);
 		activity.getDatastoreObject().getMetadata(this.init_canaccessdatastore.bind(this));
 	}
 

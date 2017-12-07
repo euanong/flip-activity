@@ -4,17 +4,17 @@ define(["sugar-web/activity/activity",'easeljs','tweenjs','activity/game','activ
 	require(['domReady!'], function (doc) {
 
 		// Initialize the activity.
-		require(["sugar-web/env","sugar-web/datastore"], function(env,datastore) {
+		require(["sugar-web/env","sugar-web/datastore","activity/sizepalette"], function(env,datastore,sizepalette) {
 			act.setup();
 			act.getXOColor(function (error, colors) {
-				runactivity(act,doc,colors,env,datastore);
+				runactivity(act,doc,colors,env,datastore,sizepalette);
 			});
 		});
 	});
 
 });
 
-function runactivity(act,doc,colors,env,datastore){
+function runactivity(act,doc,colors,env,datastore,sizepalette){
 	var canvas;
 	var stage;
 	var g;
@@ -33,7 +33,7 @@ function runactivity(act,doc,colors,env,datastore){
 		function handleTick() {
 			stage.update();
 		}
-		g = new Game(stage,colors,doc,datastore,act);
+		var g = new Game(stage,colors,doc,datastore,act,sizepalette);
 		setTimeout(function(){ g.init(); }, 500);
 		var hasBeenResized = false;
 		window.addEventListener('resize', resizeCanvas, false);
